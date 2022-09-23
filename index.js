@@ -26,9 +26,12 @@ const multicallContract = new service.eth.Contract(multicallAbi, multicallAddres
 
 const priceCalls = [];
 allFtsos.forEach(ftso => {
+    /*
     const ftsoContract = new service.eth.Contract(ftsoAbi, ftso.address);
-    const ftsoCall = ftsoContract.methods.getCurrentPrice().encodeABI();
-    priceCalls.push([ftso.address, ftsoCall]);
+    const ftsoCall = ftsoContract.methods.getCurrentPrice().encodeABI(); 
+    // Results in 0xeb91d37e;
+    */
+    priceCalls.push([ftso.address, "0xeb91d37e"]);
 });
 
 /**
