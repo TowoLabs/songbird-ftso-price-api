@@ -1,0 +1,9 @@
+{
+    "name": "sample-http",
+    "version": "0.0.1",
+    "dependencies": {
+        "bignumber.js": "^9.0.1",
+        "web3": "^1.6.1"
+    }
+  }
+  
