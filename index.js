@@ -24,7 +24,7 @@ const allFtsos = [
 const multicallAddress = "0x17032Ea9c3a13Ed337665145364c0d2aD1108c91";
 const multicallContract = new service.eth.Contract(multicallAbi, multicallAddress);
 
-const priceCalls = []
+const priceCalls = [];
 allFtsos.forEach(ftso => {
     const ftsoContract = new service.eth.Contract(ftsoAbi, ftso.address);
     const ftsoCall = ftsoContract.methods.getCurrentPrice().encodeABI();
