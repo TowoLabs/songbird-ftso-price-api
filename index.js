@@ -41,20 +41,31 @@ allFtsos.forEach(ftso => {
  * @param {!express:Response} res HTTP response context.
  */
 exports.fetchPrices = (req, res) => {
-    const determinedPrices = [];
+    res.set('Access-Control-Allow-Origin', '*');
 
-    multicallContract.methods.aggregate(priceCalls).call((error, result) => {
-        if (error) {
-            res.status(500).send();
-        }
-    
-        allFtsos.forEach((ftso, index) => {
-            const hexPrice = result.returnData[index].slice(0, 66);
-            const rawPrice = new BigNumber(hexPrice);
-            const price = rawPrice.shiftedBy(-ftso.decimals).toFixed();
-            determinedPrices.push({ price: price, symbol: ftso.symbol });
-        });
-    
-        res.status(200).send(determinedPrices);
-    });
+    if (req.method === 'OPTIONS') {
+        // Send response to OPTIONS requests
+        res.set('Access-Control-Allow-Methods', 'GET');
+        res.set('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With');
+        res.set('Access-Control-Max-Age', '3600');
+        res.status(204).send('');
+        
+    } else {
+        const determinedPrices = [];
+
+        multicallContract.methods.aggregate(priceCalls).call((error, result) => {
+            if (error) {
+                res.status(500).send();
+            }
+        
+            allFtsos.forEach((ftso, index) => {
+                const hexPrice = result.returnData[index].slice(0, 66);
+                const rawPrice = new BigNumber(hexPrice);
+                const price = rawPrice.shiftedBy(-ftso.decimals).toFixed();
+                determinedPrices.push({ price: price, symbol: ftso.symbol });
+            });
+        
+            res.status(200).send(determinedPrices);
+        });   
+    }
 };
