@@ -6,18 +6,18 @@ const node = "https://songbird-api.flare.network/ext/C/rpc";
 const service = new Web3(node);
 
 const allFtsos = [
-  { address: "0xa1a9b8ab5bb798eee536a23669ad744dcf8537a3", symbol: "XRP/USD", decimals: 5 },
-  { address: "0x157d6316475765f13348dfa897c503af0161b232", symbol: "LTC/USD", decimals: 5 },
-  { address: "0xdc2cfeee7da8be3eef13b9e05bb4235063d0ecc1", symbol: "XLM/USD", decimals: 5 },
-  { address: "0xbc696a456e351c8a5f170135868a3850eb29135a", symbol: "DOGE/USD", decimals: 5 },
-  { address: "0xce7472a48754a2afe34951c6f35f7bfe01bb8fee", symbol: "ADA/USD", decimals: 5 },
-  { address: "0x2ce1d8653bbca3f636a63e35136f4e015f0b4647", symbol: "ALGO/USD", decimals: 5 },
-  { address: "0x9dcda46cb0589ec54384801905b2f79b65e93347", symbol: "BCH/USD", decimals: 5 },
-  { address: "0xd47b92e53941b7f71aca3cd6235c866c55b4f23a", symbol: "DGB/USD", decimals: 5 },
-  { address: "0x20fecb7b1ff69c62bba5bb6acd5a9743d11e246f", symbol: "BTC/USD", decimals: 5 },
-  { address: "0x3c028fe13a87229d5d56a5b234edc0199794684e", symbol: "ETH/USD", decimals: 5 },
-  { address: "0x71c57de677222f5e9bb3a3134eb27aee8b50bd39", symbol: "FIL/USD", decimals: 5 },
-  { address: "0x23f1aaa1b6a5fd5bbb5906fa389d517c870ca2ff", symbol: "SGB/USD", decimals: 5 },
+  { address: "0x2be2a30c312f02b4a43327e36acc9a2e8fa94f81", symbol: "XRP/USD", decimals: 5 },
+  { address: "0x1578a0e968e4bde8b0a5c0e155ac3d73adde7d9e", symbol: "LTC/USD", decimals: 5 },
+  { address: "0x95f1de36a886492b2b2ce8f4476cef25d4d752ee", symbol: "XLM/USD", decimals: 5 },
+  { address: "0x2f976fe9c802deaf684ad725c46f55b5c8eba19f", symbol: "DOGE/USD", decimals: 5 },
+  { address: "0x9f867b6ae76fa031130d640cc58d04aa501414c0", symbol: "ADA/USD", decimals: 5 },
+  { address: "0x502dd637b79b21b709fdf5b61a4b824d584224c3", symbol: "ALGO/USD", decimals: 5 },
+  { address: "0xd1d12609851170e7c48e5d5022bf973cd285fbdf", symbol: "BCH/USD", decimals: 5 },
+  { address: "0x72fd7a3a012370bee1f64bf55ab168524e69c24c", symbol: "DGB/USD", decimals: 5 },
+  { address: "0x602b1c4c6a7f192d9c9cff7dcb3ec272ca3dfc81", symbol: "BTC/USD", decimals: 5 },
+  { address: "0xd20975f531e8aea8a94f8acd8f4a67914b099471", symbol: "ETH/USD", decimals: 5 },
+  { address: "0x44a26395fc561701875a653183da340f16eefdec", symbol: "FIL/USD", decimals: 5 },
+  { address: "0xf9660c1421a095fe2c49e8e4396e9eaf39d3d7f3", symbol: "SGB/USD", decimals: 5 },
 ];
 
 const multicallAddress = "0x17032Ea9c3a13Ed337665145364c0d2aD1108c91";
@@ -39,7 +39,7 @@ allFtsos.forEach(ftso => {
  * @param {!express:Response} res HTTP response context.
  */
 exports.fetchPrices = (req, res) => {
-  res.set('Access-Control-Allow-Origin', '*');
+  res.set('Access-Control-Allow-Origin', 'https://bifrostoracle.com');
 
   if (req.method === 'OPTIONS') {
     res.set('Access-Control-Allow-Methods', 'GET');
